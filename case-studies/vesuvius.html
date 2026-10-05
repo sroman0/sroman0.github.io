@@ -1,96 +1,129 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Vesuvius is an eBPF runtime-security monitor developed by Simone Romano as a Master's thesis in collaboration with Rakuten.">
-  <meta name="theme-color" content="#eeeee7">
-  <title>Vesuvius - Simone Romano</title>
-  <script>document.documentElement.classList.add('js');try{const theme=localStorage.getItem('theme');if(theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(_){if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}</script>
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css">
-  <script src="../script.js" defer></script>
-</head>
-<body class="case-body">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header case-header">
-    <a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a>
-    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label"></span></button>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
-    <nav id="case-nav" class="site-nav" data-nav><a href="../index.html#work">← All work</a><a class="nav-external" href="https://github.com/V3suv1us/demo_project" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a></nav>
-  </header>
-
-  <main id="main" class="case-main">
-    <section class="case-hero">
-      <div class="case-kicker"><span>Defensive engineering / 2026</span><span>Master's thesis · Rakuten collaboration</span></div>
-      <h1>Vesuvius.<br><em>Making system activity visible.</em></h1>
-      <div class="case-summary">
-        <p>A security-monitoring tool that watches how programs start, stop, and communicate on a Linux machine. The goal is to give defenders useful evidence for detecting suspicious behavior.</p>
-        <div class="case-facts">
-          <div><span>My role</span><strong>Process monitoring</strong></div>
-          <div><span>Target</span><strong>Rocky Linux 8.10</strong></div>
-          <div><span>Kernel side</span><strong>C + eBPF</strong></div>
-          <div><span>Userspace</span><strong>Go</strong></div>
-        </div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vesuvius is an eBPF runtime-security monitor developed by Simone Romano as a Master's thesis in collaboration with Rakuten.">
+    <meta name="theme-color" content="#f8f9f6">
+    <link rel="canonical" href="https://sromano-digital-portfolio.simoneromano221.workers.dev/case-studies/vesuvius.html">
+    <meta property="og:title" content="Vesuvius - Simone Romano">
+    <meta property="og:description" content="Vesuvius is an eBPF runtime-security monitor developed by Simone Romano as a Master's thesis in collaboration with Rakuten.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sromano-digital-portfolio.simoneromano221.workers.dev/case-studies/vesuvius.html">
+    <meta name="twitter:card" content="summary">
+    <title>Vesuvius - Simone Romano</title>
+    <script>document.documentElement.classList.add('js');try{const theme=localStorage.getItem('theme');if(theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(_){if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}</script>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
+  </head>
+  <body class="case-body"><a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header case-header">
+      <div class="header-inner"><a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span data-theme-icon aria-hidden="true"></span><span class="sr-only" data-theme-label></span></button>
+        <nav id="case-nav" class="site-nav" aria-label="Case study navigation"><a href="../projects.html">← All projects</a><a href="../index.html#contact">Contact</a>
+        </nav>
       </div>
-    </section>
-
-    <div class="case-content">
-      <section class="case-section reveal">
-        <div class="case-section-label">01 / Context</div>
-        <div class="case-prose">
-          <h2>Watch the system while it is running.</h2>
-          <p>Vesuvius is my Master's thesis project at Politecnico di Torino, developed with a teammate and in collaboration with Rakuten. It records important process and network events while a Linux system is running, then turns them into structured data for security analysis.</p>
-          <p>I am responsible for process monitoring: when a process is created, starts a program, or exits. My teammate covers network connections. Combining the two views helps explain which program communicated with which endpoint.</p>
+    </header>
+    <main id="main" class="case-main">
+      <section class="case-hero">
+        <div class="case-kicker"><span>Defensive engineering / 2026</span><span>Master's thesis · Rakuten collaboration</span>
         </div>
-      </section>
-
-      <section class="case-section reveal">
-        <div class="case-section-label">02 / Architecture</div>
-        <div class="case-prose">
-          <h2>Turn a system event into useful security data.</h2>
-          <div class="flow-diagram" aria-label="Vesuvius architecture">
-            <span>eBPF hooks</span><i></i><span>Shared maps</span><i></i><span>Ring buffer</span><i></i><span>Go reader</span><i></i><span>JSON events</span><i></i><span>Detection</span>
-          </div>
-          <p>Small eBPF programs collect events inside the kernel. Shared maps remember process and container information, and a ring buffer sends each event to a Go application. The application converts the data to JSON so detection rules can use it.</p>
-          <h3>Process lifecycle</h3>
-          <ul>
-            <li><code>sched_process_fork</code> establishes parent-child lineage.</li>
-            <li><code>sched_process_exec</code> captures the transition to a new executable image.</li>
-            <li><code>sched_process_exit</code> closes the lifecycle and supports state cleanup.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="case-section reveal">
-        <div class="case-section-label">03 / Compatibility</div>
-        <div class="case-prose">
-          <h2>Test the real system, not just its version number.</h2>
-          <p>The target reports Linux 4.18, which normally suggests that several modern eBPF features are unavailable. Rocky Linux, however, adds newer features to its older base kernel through vendor backports.</p>
-          <p>I wrote small tests for each capability we needed. BTF, portable CO-RE access, BPF LSM, ring buffers, and larger eBPF stacks all worked. Those results let us use a simpler modern architecture instead of building unnecessary compatibility code.</p>
-          <div class="outcome-grid">
-            <article class="outcome-card"><span>Portability</span><strong>BTF + CO-RE</strong><p>Portable field access against the real target kernel.</p></article>
-            <article class="outcome-card"><span>Transport</span><strong>Ring buffer</strong><p>Modern event delivery instead of perf-event arrays.</p></article>
-            <article class="outcome-card"><span>Enforcement surface</span><strong>BPF LSM</strong><p>Stable security hooks available through vendor backports.</p></article>
-            <article class="outcome-card"><span>Reference</span><strong>Tracee</strong><p>Aqua Security's runtime monitor informed hook and data-model decisions.</p></article>
+        <h1>Vesuvius.<br><em>Making system activity visible.</em></h1>
+        <div class="case-summary">
+          <p>A security-monitoring tool that watches how programs start, stop, and communicate on a Linux machine. The goal is to give defenders useful evidence for detecting suspicious behavior.</p>
+          <div class="case-facts">
+            <div><span>My role</span><strong>Process monitoring</strong>
+            </div>
+            <div><span>Target</span><strong>Rocky Linux 8.10</strong>
+            </div>
+            <div><span>Kernel side</span><strong>C + eBPF</strong>
+            </div>
+            <div><span>Userspace</span><strong>Go</strong>
+            </div>
           </div>
         </div>
       </section>
-
-      <section class="case-section reveal">
-        <div class="case-section-label">04 / Engineering</div>
-        <div class="case-prose">
-          <h2>Keep kernel code small and responsibilities clear.</h2>
-          <p>The kernel side only collects and transports essential data. More complex parsing and security decisions stay in the Go application, where the code is easier to test and change.</p>
-          <p>Process and network monitoring share the same event formats and state models. Feature branches and pull requests make changes to those shared contracts visible while the two parts are developed in parallel.</p>
-          <div class="callout"><strong>Current framing</strong><p>Vesuvius is active thesis work. This case study focuses on verified architecture and my process-monitoring contribution; it does not claim production deployment or performance results that have not yet been measured.</p></div>
+      <aside class="case-at-a-glance" aria-label="Project summary">
+        <div>
+          <h2>My contribution</h2>
+          <p>Process creation, execution, and exit monitoring; network monitoring is my teammate’s contribution.</p>
         </div>
-      </section>
-
-      <a class="case-next" href="secure-timeout-system.html"><span>Next case study</span><strong>Secure Timeout System →</strong></a>
-    </div>
-  </main>
-
-  <footer class="portfolio-footer"><div><strong>© <span data-year></span> Simone Romano.</strong><span>All rights reserved.</span></div><div><span>Case study / Vesuvius</span><a href="../index.html">Back to portfolio</a></div><div><span>Site last updated</span><time datetime="2026-06-20">20 June 2026</time></div></footer>
-</body>
+        <div>
+          <h2>Result &amp; limits</h2>
+          <p>eBPF collection and Go event processing documented for Rocky Linux. Production deployment and performance are not established by this write-up.</p>
+        </div>
+      </aside>
+      <nav class="case-contents" aria-label="On this page"><strong>On this page</strong><a href="#section-1">Context</a><a href="#section-2">Architecture</a><a href="#section-3">Compatibility</a><a href="#section-4">Engineering</a>
+      </nav>
+      <div class="case-content">
+        <section class="case-section" id="section-1">
+          <div class="case-section-label">01 / Context
+          </div>
+          <div class="case-prose">
+            <h2>Watch the system while it is running.</h2>
+            <p>Vesuvius is my Master's thesis project at Politecnico di Torino, developed with a teammate and in collaboration with Rakuten. It records important process and network events while a Linux system is running, then turns them into structured data for security analysis.</p>
+            <p>I am responsible for process monitoring: when a process is created, starts a program, or exits. My teammate covers network connections. Combining the two views helps explain which program communicated with which endpoint.</p>
+          </div>
+        </section>
+        <section class="case-section" id="section-2">
+          <div class="case-section-label">02 / Architecture
+          </div>
+          <div class="case-prose">
+            <h2>Turn a system event into useful security data.</h2>
+            <div class="flow-diagram" aria-label="Vesuvius architecture"><span>eBPF hooks</span><i></i><span>Shared maps</span><i></i><span>Ring buffer</span><i></i><span>Go reader</span><i></i><span>JSON events</span><i></i><span>Detection</span>
+            </div>
+            <p>Small eBPF programs collect events inside the kernel. Shared maps remember process and container information, and a ring buffer sends each event to a Go application. The application converts the data to JSON so detection rules can use it.</p>
+            <h3>Process lifecycle</h3>
+            <ul>
+              <li><code>sched_process_fork</code> establishes parent-child lineage.
+              </li>
+              <li><code>sched_process_exec</code> captures the transition to a new executable image.
+              </li>
+              <li><code>sched_process_exit</code> closes the lifecycle and supports state cleanup.
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="case-section" id="section-3">
+          <div class="case-section-label">03 / Compatibility
+          </div>
+          <div class="case-prose">
+            <h2>Test the real system, not just its version number.</h2>
+            <p>The target reports Linux 4.18, which normally suggests that several modern eBPF features are unavailable. Rocky Linux, however, adds newer features to its older base kernel through vendor backports.</p>
+            <p>I wrote small tests for each capability we needed. BTF, portable CO-RE access, BPF LSM, ring buffers, and larger eBPF stacks all worked. Those results let us use a simpler modern architecture instead of building unnecessary compatibility code.</p>
+            <div class="outcome-grid">
+              <article class="outcome-card"><span>Portability</span><strong>BTF + CO-RE</strong>
+                <p>Portable field access against the real target kernel.</p>
+              </article>
+              <article class="outcome-card"><span>Transport</span><strong>Ring buffer</strong>
+                <p>Modern event delivery instead of perf-event arrays.</p>
+              </article>
+              <article class="outcome-card"><span>Enforcement surface</span><strong>BPF LSM</strong>
+                <p>Stable security hooks available through vendor backports.</p>
+              </article>
+              <article class="outcome-card"><span>Reference</span><strong>Tracee</strong>
+                <p>Aqua Security's runtime monitor informed hook and data-model decisions.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="case-section" id="section-4">
+          <div class="case-section-label">04 / Engineering
+          </div>
+          <div class="case-prose">
+            <h2>Keep kernel code small and responsibilities clear.</h2>
+            <p>The kernel side only collects and transports essential data. More complex parsing and security decisions stay in the Go application, where the code is easier to test and change.</p>
+            <p>Process and network monitoring share the same event formats and state models. Feature branches and pull requests make changes to those shared contracts visible while the two parts are developed in parallel.</p>
+            <div class="callout"><strong>Current framing</strong>
+              <p>This thesis case study documents the architecture and my process-monitoring contribution. It does not establish production deployment or measured performance. The source repository is currently unavailable publicly; the technical overview is provided here.</p>
+            </div>
+          </div>
+        </section><a class="case-next" href="secure-timeout-system.html"><span>Next case study</span><strong>Secure Timeout System →</strong></a>
+      </div>
+    </main>
+    <footer class="portfolio-footer">
+      <div><strong>© <span data-year>2026</span> Simone Romano</strong><span>Italy · Computer science &amp; cybersecurity</span>
+      </div><a href="../projects.html">All projects →</a><span>Updated <time datetime="2026-10-01">1 October 2026</time></span>
+    </footer>
+  </body>
 </html>

@@ -1,108 +1,145 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A machine-learning study of 230,000 honeypot-captured SSH shell attack sessions using supervised learning, clustering, and BERT.">
-  <meta name="theme-color" content="#eeeee7">
-  <title>SSH Shell Attacks - Simone Romano</title>
-  <script>document.documentElement.classList.add('js');try{const theme=localStorage.getItem('theme');if(theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(_){if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}</script>
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css">
-  <script src="../script.js" defer></script>
-</head>
-<body class="case-body">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header case-header">
-    <a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a>
-    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label"></span></button>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
-    <nav id="case-nav" class="site-nav" data-nav><a href="../index.html#work">← All work</a><a class="nav-external" href="https://github.com/sroman0/SSH-SHELL-ATTACKS" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a></nav>
-  </header>
-
-  <main id="main" class="case-main">
-    <section class="case-hero">
-      <div class="case-kicker"><span>Machine learning for security / 2025</span><span>Four-person team · Politecnico di Torino</span></div>
-      <h1>230,000 attacks.<br><em>Seven adversary intents.</em></h1>
-      <div class="case-summary">
-        <p>We analyzed 230,000 real attack sessions collected by decoy servers and compared several machine-learning methods for recognizing what each attacker was trying to do.</p>
-        <div class="case-facts">
-          <div><span>Role</span><strong>Research &amp; development</strong></div>
-          <div><span>Dataset</span><strong>230K sessions</strong></div>
-          <div><span>Stack</span><strong>Python, sklearn, PyTorch</strong></div>
-          <div><span>Framework</span><strong>MITRE ATT&amp;CK</strong></div>
-        </div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A machine-learning study of 230,000 honeypot-captured SSH shell attack sessions using supervised learning, clustering, and BERT.">
+    <meta name="theme-color" content="#f8f9f6">
+    <link rel="canonical" href="https://sromano-digital-portfolio.simoneromano221.workers.dev/case-studies/ssh-shell-attacks.html">
+    <meta property="og:title" content="SSH Shell Attacks - Simone Romano">
+    <meta property="og:description" content="A machine-learning study of 230,000 honeypot-captured SSH shell attack sessions using supervised learning, clustering, and BERT.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sromano-digital-portfolio.simoneromano221.workers.dev/case-studies/ssh-shell-attacks.html">
+    <meta name="twitter:card" content="summary">
+    <title>SSH Shell Attacks - Simone Romano</title>
+    <script>document.documentElement.classList.add('js');try{const theme=localStorage.getItem('theme');if(theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(_){if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}</script>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
+  </head>
+  <body class="case-body"><a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header case-header">
+      <div class="header-inner"><a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span data-theme-icon aria-hidden="true"></span><span class="sr-only" data-theme-label></span></button>
+        <nav id="case-nav" class="site-nav" aria-label="Case study navigation"><a href="../projects.html">← All projects</a><a class="nav-external" href="https://github.com/sroman0/SSH-SHELL-ATTACKS" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
       </div>
-    </section>
-
-    <div class="case-content">
-      <section class="case-section reveal">
-        <div class="case-section-label">01 / The problem</div>
-        <div class="case-prose">
-          <h2>Turn unstructured commands into attacker intent.</h2>
-          <p>An SSH honeypot is a decoy server that records the commands sent by attackers. Reading 230,000 sessions by hand is unrealistic, so we tested whether machine learning could summarize the attackers' goals.</p>
-          <p>We used seven categories based on MITRE ATT&amp;CK, including system discovery, persistence, execution, and impact. One session can contain several goals, so a model may need to assign more than one label.</p>
+    </header>
+    <main id="main" class="case-main">
+      <section class="case-hero">
+        <div class="case-kicker"><span>Machine learning for security / 2025</span><span>Four-person team · Politecnico di Torino</span>
         </div>
-      </section>
-
-      <section class="case-section reveal">
-        <div class="case-section-label">02 / Data</div>
-        <div class="case-prose">
-          <h2>Prepare the attack data before training a model.</h2>
-          <p>We decoded 90,026 hidden shell scripts, normalized timestamps, separated commands into useful terms, and removed noisy variables and symbols. A statistical text representation then reduced roughly 300,000 candidate terms to 90 useful features.</p>
-          <p>System discovery and persistence dominated the dataset, while the Impact category appeared only 27 times. This imbalance became the main weakness of every model: common behavior was easy to learn, but rare behavior was not.</p>
-          <div class="flow-diagram" aria-label="Data pipeline"><span>Raw sessions</span><i></i><span>Decode</span><i></i><span>Tokenize</span><i></i><span>Clean</span><i></i><span>TF-IDF</span><i></i><span>Multi-label targets</span></div>
-        </div>
-      </section>
-
-      <section class="case-section reveal">
-        <div class="case-section-label">03 / Supervised</div>
-        <div class="case-prose">
-          <h2>High scores can hide weak categories.</h2>
-          <p>We first tested Random Forest, SVM, and Logistic Regression. Random Forest and SVM performed very well on the common attack categories, and additional parameter tuning produced only a small improvement.</p>
-          <div class="outcome-grid">
-            <article class="outcome-card accent"><span>Random Forest · baseline</span><strong>0.996 F1</strong><p>Weighted precision 0.999 and recall 0.994 on the test set.</p></article>
-            <article class="outcome-card accent"><span>SVM · tuned</span><strong>0.9966 F1</strong><p>RBF kernel, C=100, gamma=scale; approximately 1.48% above baseline.</p></article>
+        <h1>230,000 attacks.<br><em>Seven adversary intents.</em></h1>
+        <div class="case-summary">
+          <p>We analyzed 230,000 real attack sessions collected by decoy servers and compared several machine-learning methods for recognizing what each attacker was trying to do.</p>
+          <div class="case-facts">
+            <div><span>Role</span><strong>Research &amp; development</strong>
+            </div>
+            <div><span>Dataset</span><strong>230K sessions</strong>
+            </div>
+            <div><span>Stack</span><strong>Python, sklearn, PyTorch</strong>
+            </div>
+            <div><span>Framework</span><strong>MITRE ATT&amp;CK</strong>
+            </div>
           </div>
-          <p>Neither result erased the imbalance problem. Impact remained difficult because its support was vanishingly small. Weighted averages describe performance on the dominant classes well, but they should not be mistaken for uniform reliability across every intent.</p>
         </div>
       </section>
-
-      <section class="case-section reveal">
-        <div class="case-section-label">04 / Unsupervised</div>
-        <div class="case-prose">
-          <h2>A good metric did not guarantee useful groups.</h2>
-          <p>We also asked unsupervised models to group similar sessions without using labels. Their mathematical scores looked strong, but visual inspection showed one dominant group and heavy overlap between attacker behaviors.</p>
-          <p>Some communities were interpretable-BusyBox and mount commands suggested IoT-oriented activity, while chmod, wget, and SSH indicated file modification and persistence-but the overall segmentation was not clean enough to treat clusters as distinct tactics.</p>
-          <div class="callout"><strong>Metric literacy</strong><p>The most valuable result was the disagreement between a high silhouette score and weak semantic separation. Validation metrics, visual structure, and domain interpretation all had to be considered together.</p></div>
+      <aside class="case-at-a-glance" aria-label="Project summary">
+        <div>
+          <h2>My contribution</h2>
+          <p>Four-person team; my commits include clustering and language-model notebooks.</p>
         </div>
-      </section>
-
-      <section class="case-section reveal">
-        <div class="case-section-label">05 / Language model</div>
-        <div class="case-prose">
-          <h2>A language model added context, but not missing data.</h2>
-          <p>Finally, we adapted BERT, a pretrained language model, to assign several attack labels to one session. We kept its existing language knowledge fixed and trained a small classification layer on top.</p>
-          <div class="outcome-grid">
-            <article class="outcome-card accent"><span>BERT · weighted test metrics</span><strong>0.9937 F1</strong><p>Precision 0.9974, recall 0.9927, and ROC-AUC 0.9971.</p></article>
-            <article class="outcome-card"><span>Weakest class</span><strong>0.78 AUC</strong><p>Harmless activity remained harder to distinguish because of limited examples and imbalance.</p></article>
+        <div>
+          <h2>Result &amp; limits</h2>
+          <p>Compared models on approximately 230,000 sessions. Strong aggregate results still leave rare attack categories poorly represented.</p>
+        </div>
+      </aside>
+      <nav class="case-contents" aria-label="On this page"><strong>On this page</strong><a href="#section-1">The problem</a><a href="#section-2">Data</a><a href="#section-3">Supervised</a><a href="#section-4">Unsupervised</a><a href="#section-5">Language model</a><a href="#section-6">Takeaway</a>
+      </nav>
+      <div class="case-content">
+        <div class="case-evidence">
+          <p>My contributions include updates to the <a href="https://github.com/sroman0/SSH-SHELL-ATTACKS/commit/a68f285d4c58abc9cc36301dad0ac7823f8d1759" target="_blank" rel="noreferrer">clustering notebook ↗</a> and <a href="https://github.com/sroman0/SSH-SHELL-ATTACKS/commit/c10c05e9be2fc51565319fafb5cad9e3633f6b60" target="_blank" rel="noreferrer">language-model experiments ↗</a>. The reported dataset and comparative results belong to the four-person team study.</p>
+          <p><a href="https://github.com/sroman0/SSH-SHELL-ATTACKS/blob/main/SSH-Shell-Attacks-report.pdf" target="_blank" rel="noreferrer">Read the project report ↗</a></p>
+        </div>
+        <section class="case-section" id="section-1">
+          <div class="case-section-label">01 / The problem
           </div>
-          <p>The experiment showed the value of semantic representations for command sequences, but it also reinforced a broader lesson: a sophisticated model does not compensate for missing class support.</p>
-        </div>
-      </section>
-
-      <section class="case-section reveal">
-        <div class="case-section-label">06 / Takeaway</div>
-        <div class="case-prose">
-          <h2>The comparison mattered more than the best score.</h2>
-          <p>Classical supervised models were already highly effective on well-represented intents. Unsupervised methods surfaced broad command communities but struggled to produce semantically distinct attack categories. BERT captured multi-label semantics effectively, while its weakest class exposed the same imbalance found across the study.</p>
-          <p>The practical next steps are not simply “use a larger model”: introduce domain-aware features and network context, rebalance rare intents, test on broader sources, and evaluate whether results generalize beyond the original June 2019–March 2020 honeypot window.</p>
-        </div>
-      </section>
-
-      <a class="case-next" href="ebpf-exploitability.html"><span>Next case study</span><strong>Exploitability analysis →</strong></a>
-    </div>
-  </main>
-  <footer class="portfolio-footer"><div><strong>© <span data-year></span> Simone Romano.</strong><span>All rights reserved.</span></div><div><span>Case study / SSH Shell Attacks</span><a href="../index.html">Back to portfolio</a></div><div><span>Site last updated</span><time datetime="2026-06-20">20 June 2026</time></div></footer>
-</body>
+          <div class="case-prose">
+            <h2>Turn unstructured commands into attacker intent.</h2>
+            <p>An SSH honeypot is a decoy server that records the commands sent by attackers. Reading 230,000 sessions by hand is unrealistic, so we tested whether machine learning could summarize the attackers' goals.</p>
+            <p>We used seven categories based on MITRE ATT&amp;CK, including system discovery, persistence, execution, and impact. One session can contain several goals, so a model may need to assign more than one label.</p>
+          </div>
+        </section>
+        <section class="case-section" id="section-2">
+          <div class="case-section-label">02 / Data
+          </div>
+          <div class="case-prose">
+            <h2>Prepare the attack data before training a model.</h2>
+            <p>We decoded 90,026 hidden shell scripts, normalized timestamps, separated commands into useful terms, and removed noisy variables and symbols. A statistical text representation then reduced roughly 300,000 candidate terms to 90 useful features.</p>
+            <p>System discovery and persistence dominated the dataset, while the Impact category appeared only 27 times. This imbalance became the main weakness of every model: common behavior was easy to learn, but rare behavior was not.</p>
+            <div class="flow-diagram" aria-label="Data pipeline"><span>Raw sessions</span><i></i><span>Decode</span><i></i><span>Tokenize</span><i></i><span>Clean</span><i></i><span>TF-IDF</span><i></i><span>Multi-label targets</span>
+            </div>
+          </div>
+        </section>
+        <section class="case-section" id="section-3">
+          <div class="case-section-label">03 / Supervised
+          </div>
+          <div class="case-prose">
+            <h2>High scores can hide weak categories.</h2>
+            <p>We first tested Random Forest, SVM, and Logistic Regression. Random Forest and SVM performed very well on the common attack categories, and additional parameter tuning produced only a small improvement.</p>
+            <div class="outcome-grid">
+              <article class="outcome-card accent"><span>Random Forest · baseline</span><strong>0.996 F1</strong>
+                <p>Weighted precision 0.999 and recall 0.994 on the test set.</p>
+              </article>
+              <article class="outcome-card accent"><span>SVM · tuned</span><strong>0.9966 F1</strong>
+                <p>RBF kernel, C=100, gamma=scale; approximately 1.48% above baseline.</p>
+              </article>
+            </div>
+            <p>Neither result erased the imbalance problem. Impact remained difficult because its support was vanishingly small. Weighted averages describe performance on the dominant classes well, but they should not be mistaken for uniform reliability across every intent.</p>
+          </div>
+        </section>
+        <section class="case-section" id="section-4">
+          <div class="case-section-label">04 / Unsupervised
+          </div>
+          <div class="case-prose">
+            <h2>A good metric did not guarantee useful groups.</h2>
+            <p>We also asked unsupervised models to group similar sessions without using labels. Their mathematical scores looked strong, but visual inspection showed one dominant group and heavy overlap between attacker behaviors.</p>
+            <p>Some communities were interpretable-BusyBox and mount commands suggested IoT-oriented activity, while chmod, wget, and SSH indicated file modification and persistence-but the overall segmentation was not clean enough to treat clusters as distinct tactics.</p>
+            <div class="callout"><strong>Metric literacy</strong>
+              <p>The most valuable result was the disagreement between a high silhouette score and weak semantic separation. Validation metrics, visual structure, and domain interpretation all had to be considered together.</p>
+            </div>
+          </div>
+        </section>
+        <section class="case-section" id="section-5">
+          <div class="case-section-label">05 / Language model
+          </div>
+          <div class="case-prose">
+            <h2>A language model added context, but not missing data.</h2>
+            <p>Finally, we adapted BERT, a pretrained language model, to assign several attack labels to one session. We kept its existing language knowledge fixed and trained a small classification layer on top.</p>
+            <div class="outcome-grid">
+              <article class="outcome-card accent"><span>BERT · weighted test metrics</span><strong>0.9937 F1</strong>
+                <p>Precision 0.9974, recall 0.9927, and ROC-AUC 0.9971.</p>
+              </article>
+              <article class="outcome-card"><span>Weakest class</span><strong>0.78 AUC</strong>
+                <p>Harmless activity remained harder to distinguish because of limited examples and imbalance.</p>
+              </article>
+            </div>
+            <p>The experiment showed the value of semantic representations for command sequences, but it also reinforced a broader lesson: a sophisticated model does not compensate for missing class support.</p>
+          </div>
+        </section>
+        <section class="case-section" id="section-6">
+          <div class="case-section-label">06 / Takeaway
+          </div>
+          <div class="case-prose">
+            <h2>The comparison mattered more than the best score.</h2>
+            <p>Classical supervised models were already highly effective on well-represented intents. Unsupervised methods surfaced broad command communities but struggled to produce semantically distinct attack categories. BERT captured multi-label semantics effectively, while its weakest class exposed the same imbalance found across the study.</p>
+            <p>The practical next steps are not simply “use a larger model”: introduce domain-aware features and network context, rebalance rare intents, test on broader sources, and evaluate whether results generalize beyond the original June 2019–March 2020 honeypot window.</p>
+          </div>
+        </section><a class="case-next" href="ebpf-exploitability.html"><span>Next case study</span><strong>Exploitability analysis →</strong></a>
+      </div>
+    </main>
+    <footer class="portfolio-footer">
+      <div><strong>© <span data-year>2026</span> Simone Romano</strong><span>Italy · Computer science &amp; cybersecurity</span>
+      </div><a href="../projects.html">All projects →</a><span>Updated <time datetime="2026-10-01">1 October 2026</time></span>
+    </footer>
+  </body>
 </html>
