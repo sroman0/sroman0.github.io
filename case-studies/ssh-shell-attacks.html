@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A machine-learning study of 230,000 honeypot-captured SSH shell attack sessions using supervised learning, clustering, and BERT.">
-    <meta name="theme-color" content="#f8f9f6">
+    <meta name="theme-color" content="#e5ddce">
     <link rel="canonical" href="https://sromano-digital-portfolio.simoneromano221.workers.dev/case-studies/ssh-shell-attacks.html">
     <meta property="og:title" content="SSH Shell Attacks - Simone Romano">
     <meta property="og:description" content="A machine-learning study of 230,000 honeypot-captured SSH shell attack sessions using supervised learning, clustering, and BERT.">
@@ -19,8 +19,8 @@
   </head>
   <body class="case-body"><a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header case-header">
-      <div class="header-inner"><a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span data-theme-icon aria-hidden="true"></span><span class="sr-only" data-theme-label></span></button>
-        <nav id="case-nav" class="site-nav" aria-label="Case study navigation"><a href="../projects.html">← All projects</a><a class="nav-external" href="https://github.com/sroman0/SSH-SHELL-ATTACKS" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+      <div class="header-inner"><a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span>Simone Romano</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark appearance"><span data-theme-label>Dark appearance</span></button>
+        <nav id="case-nav" class="site-nav" aria-label="Case study navigation"><a href="../projects.html"> All projects</a><a class="nav-external" href="https://github.com/sroman0/SSH-SHELL-ATTACKS" target="_blank" rel="noreferrer">Repository</a>
         </nav>
       </div>
     </header>
@@ -57,8 +57,8 @@
       </nav>
       <div class="case-content">
         <div class="case-evidence">
-          <p>My contributions include updates to the <a href="https://github.com/sroman0/SSH-SHELL-ATTACKS/commit/a68f285d4c58abc9cc36301dad0ac7823f8d1759" target="_blank" rel="noreferrer">clustering notebook ↗</a> and <a href="https://github.com/sroman0/SSH-SHELL-ATTACKS/commit/c10c05e9be2fc51565319fafb5cad9e3633f6b60" target="_blank" rel="noreferrer">language-model experiments ↗</a>. The reported dataset and comparative results belong to the four-person team study.</p>
-          <p><a href="https://github.com/sroman0/SSH-SHELL-ATTACKS/blob/main/SSH-Shell-Attacks-report.pdf" target="_blank" rel="noreferrer">Read the project report ↗</a></p>
+          <p>My contributions include updates to the <a href="https://github.com/sroman0/SSH-SHELL-ATTACKS/commit/a68f285d4c58abc9cc36301dad0ac7823f8d1759" target="_blank" rel="noreferrer">clustering notebook</a> and <a href="https://github.com/sroman0/SSH-SHELL-ATTACKS/commit/c10c05e9be2fc51565319fafb5cad9e3633f6b60" target="_blank" rel="noreferrer">language-model experiments</a>. The reported dataset and comparative results belong to the four-person team study.</p>
+          <p><a href="https://github.com/sroman0/SSH-SHELL-ATTACKS/blob/main/SSH-Shell-Attacks-report.pdf" target="_blank" rel="noreferrer">Read the project report</a></p>
         </div>
         <section class="case-section" id="section-1">
           <div class="case-section-label">01 / The problem
@@ -113,7 +113,7 @@
           <div class="case-section-label">05 / Language model
           </div>
           <div class="case-prose">
-            <h2>A language model added context, but not missing data.</h2>
+            <h2>Class imbalance in language-model classification.</h2>
             <p>Finally, we adapted BERT, a pretrained language model, to assign several attack labels to one session. We kept its existing language knowledge fixed and trained a small classification layer on top.</p>
             <div class="outcome-grid">
               <article class="outcome-card accent"><span>BERT · weighted test metrics</span><strong>0.9937 F1</strong>
@@ -134,12 +134,13 @@
             <p>Classical supervised models were already highly effective on well-represented intents. Unsupervised methods surfaced broad command communities but struggled to produce semantically distinct attack categories. BERT captured multi-label semantics effectively, while its weakest class exposed the same imbalance found across the study.</p>
             <p>The practical next steps are not simply “use a larger model”: introduce domain-aware features and network context, rebalance rare intents, test on broader sources, and evaluate whether results generalize beyond the original June 2019–March 2020 honeypot window.</p>
           </div>
-        </section><a class="case-next" href="ebpf-exploitability.html"><span>Next case study</span><strong>Exploitability analysis →</strong></a>
+        </section><a class="case-next" href="ebpf-exploitability.html"><span>Next case study</span><strong>Exploitability analysis </strong></a>
       </div>
     </main>
     <footer class="portfolio-footer">
-      <div><strong>© <span data-year>2026</span> Simone Romano</strong><span>Italy · Computer science &amp; cybersecurity</span>
-      </div><a href="../projects.html">All projects →</a><span>Updated <time datetime="2026-10-01">1 October 2026</time></span>
+      <p>© <span data-year>2026</span> Simone Romano</p>
+      <nav aria-label="Site information"><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms of use</a></nav>
+      <p>Updated <time datetime="2026-10-06">6 October 2026</time></p>
     </footer>
   </body>
 </html>

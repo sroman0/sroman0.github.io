@@ -4,10 +4,9 @@ const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
 const updateThemeToggle = () => {
   if (!themeToggle) return;
   const dark = document.documentElement.dataset.theme === 'dark';
-  const label = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  const label = dark ? 'Light appearance' : 'Dark appearance';
   themeToggle.setAttribute('aria-label', label);
   themeToggle.setAttribute('aria-pressed', String(dark));
-  themeToggle.querySelector('[data-theme-icon]').textContent = dark ? '☀' : '☾';
   themeToggle.querySelector('[data-theme-label]').textContent = label;
 };
 

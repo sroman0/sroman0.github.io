@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Vesuvius is an eBPF runtime-security monitor developed by Simone Romano as a Master's thesis in collaboration with Rakuten.">
-    <meta name="theme-color" content="#f8f9f6">
+    <meta name="theme-color" content="#e5ddce">
     <link rel="canonical" href="https://sromano-digital-portfolio.simoneromano221.workers.dev/case-studies/vesuvius.html">
     <meta property="og:title" content="Vesuvius - Simone Romano">
     <meta property="og:description" content="Vesuvius is an eBPF runtime-security monitor developed by Simone Romano as a Master's thesis in collaboration with Rakuten.">
@@ -19,8 +19,8 @@
   </head>
   <body class="case-body"><a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header case-header">
-      <div class="header-inner"><a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span data-theme-icon aria-hidden="true"></span><span class="sr-only" data-theme-label></span></button>
-        <nav id="case-nav" class="site-nav" aria-label="Case study navigation"><a href="../projects.html">← All projects</a><a href="../index.html#contact">Contact</a>
+      <div class="header-inner"><a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span>Simone Romano</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark appearance"><span data-theme-label>Dark appearance</span></button>
+        <nav id="case-nav" class="site-nav" aria-label="Case study navigation"><a href="../projects.html"> All projects</a><a href="../index.html#contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -88,7 +88,7 @@
           <div class="case-section-label">03 / Compatibility
           </div>
           <div class="case-prose">
-            <h2>Test the real system, not just its version number.</h2>
+            <h2>Validate the target kernel’s capabilities.</h2>
             <p>The target reports Linux 4.18, which normally suggests that several modern eBPF features are unavailable. Rocky Linux, however, adds newer features to its older base kernel through vendor backports.</p>
             <p>I wrote small tests for each capability we needed. BTF, portable CO-RE access, BPF LSM, ring buffers, and larger eBPF stacks all worked. Those results let us use a simpler modern architecture instead of building unnecessary compatibility code.</p>
             <div class="outcome-grid">
@@ -118,12 +118,13 @@
               <p>This thesis case study documents the architecture and my process-monitoring contribution. It does not establish production deployment or measured performance. The source repository is currently unavailable publicly; the technical overview is provided here.</p>
             </div>
           </div>
-        </section><a class="case-next" href="secure-timeout-system.html"><span>Next case study</span><strong>Secure Timeout System →</strong></a>
+        </section><a class="case-next" href="secure-timeout-system.html"><span>Next case study</span><strong>Secure Timeout System </strong></a>
       </div>
     </main>
     <footer class="portfolio-footer">
-      <div><strong>© <span data-year>2026</span> Simone Romano</strong><span>Italy · Computer science &amp; cybersecurity</span>
-      </div><a href="../projects.html">All projects →</a><span>Updated <time datetime="2026-10-01">1 October 2026</time></span>
+      <p>© <span data-year>2026</span> Simone Romano</p>
+      <nav aria-label="Site information"><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms of use</a></nav>
+      <p>Updated <time datetime="2026-10-06">6 October 2026</time></p>
     </footer>
   </body>
 </html>

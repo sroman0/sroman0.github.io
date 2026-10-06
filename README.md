@@ -19,6 +19,8 @@ Then open `http://localhost:8080`.
 - `case-studies/` - long-form project write-ups
 - `styles.css` - design system and responsive layouts
 - `script.js` - accessible theme control, preference persistence, and footer year
+- `privacy.html` - browser storage, hosting, email, and external-link privacy notice
+- `terms.html` - portfolio use, source-code licenses, research, and demo terms
 - `wrangler.jsonc` - Cloudflare Workers deployment configuration
 
 [Visit the portfolio](https://sromano-digital-portfolio.simoneromano221.workers.dev/)
@@ -35,10 +37,14 @@ The education timeline records graduation on 2 October 2026 and 110/110 cum laud
 
 Photos are intentionally omitted from page content and sharing metadata at Simone's request. The original image assets remain available for a future manual update.
 
+The design uses Georgia headings, Arial body text, warm neutral surfaces, plain text links, and square edges. It has no icon library, external font requests, gradients, shadows, rounded components, decorative animation, or colored callout stripes. Case-study results are presented as rows. Static page content is available immediately without a loading screen.
+
+Privacy and terms pages describe the current portfolio, including the local `theme` preference and external hosting/project links. Keep them aligned with actual data handling when adding forms, analytics, embeds, or other services. These pages do not claim legal certification.
+
 Vesuvius's supplied source repository returned not found during this review, so the case study remains accessible without a public code link. Restore the link when the repository becomes publicly available.
 
 ## Redesign validation
 
-Local headless Chrome checks covered the homepage, project index, all six case studies, and the 404 page at 320, 360, 390, 768, and 1440 CSS pixels in both themes. Checks included overflow, image loading, main-content visibility, keyboard skip navigation, theme persistence, sticky-header anchors, reduced motion, desktop reflow, mobile landscape, and core reading/navigation without JavaScript.
+The October 2026 redesign passed 184 local headless Chrome checks across eleven pages, including privacy and terms, at 320, 390, 768, and 1440 CSS pixels in both themes. Checks covered overflow, typography, headings, browser errors, keyboard skip navigation, text theme controls, preference persistence, and core reading without JavaScript. A source check validated 149 local link/asset references and sitemap targets.
 
 Review both themes and run the local preview after future layout changes. Validate all local links and page anchors, and check external evidence links when revising project content. The repository has no build dependencies or test runner.
